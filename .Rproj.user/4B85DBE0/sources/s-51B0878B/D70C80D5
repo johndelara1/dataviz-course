@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1547400064741.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "D70C80D5",
+    "lastKnownWriteTime" : 1547421548,
+    "last_content_update" : 1547421548302,
+    "path" : "~/Dropbox/Documents/Coding/R/DataViz/wrangling.R",
+    "project_path" : "wrangling.R",
+    "properties" : {
+        "cursorPosition" : "30,11",
+        "scrollLine" : "8",
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
