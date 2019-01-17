@@ -3,6 +3,11 @@ library(stringr)
 library(dplyr)
 library(tidyr)
 library(ggplot2)
+library(sf)
+
+# If you're a Mac user, download Quartz and run options below. More info: http://learn.r-journalism.com/en/mapping/static_maps/static-maps/
+options(device = "X11")
+X11.options(type = "cairo")
 
 country <- read_csv('https://journalismcourses.org/courses/DE0618/CountyData.csv')
 # write_csv(country, "data/country.csv", na="") # Data backup
@@ -22,10 +27,6 @@ cor(x=country$`C Income/Capita`, y=country$College2014, use="complete.obs") # co
 library(tigris)
 options(tigris_class = "sf")
 
-# If you're a Mac user, download Quartz and run options below. More info: http://learn.r-journalism.com/en/mapping/static_maps/static-maps/
-#options(device = "X11")
-#X11.options(type = "cairo")
-
 us <- states(cb=T) # Download US states' shape file using library tigris
 country_states <- country %>% mutate(StateName=str_split(country$CountyState, ", ", simplify=T)[,-1]) %>%  # Create proper State column to join with map data
   group_by(StateName) %>% summarize(income=sum(`C Income/Capita`))
@@ -43,3 +44,18 @@ ggplot(us_country) +
   geom_sf(aes(fill=College2014)) +
   scale_fill_viridis_c() +
   coord_sf(xlim=c(-67, -125), ylim=c(23, 50)) # Rough cut of US states (minus Hawaii and Alaska)
+
+# video 14: inzight and gapminder
+gap <- read_csv('https://journalismcourses.org/courses/DE0618/Gapminder2012.csv')
+
+ggplot(gap) +
+  geom_point(aes(x=LifeExpectancy, y=GDPpercapita, size=Populationtotal, color=Region,  alpha=.9)) +
+  ylim(0, 60000) + # Limits y axis
+  xlab('Life Expectancy') + # Change x, y legend
+  ylab('GDP per capita') +
+  guides(size=F, alpha=F) + # Hides size/alpha legend
+  scale_size(range=c(2,14)) + # Resize bubbles' size
+  theme_minimal() +
+  theme(axis.text=element_text(size=13), # Resize text
+        legend.text=element_text(size=13),
+        legend.position = 'bottom') # Position legend on bottom

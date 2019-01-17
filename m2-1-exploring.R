@@ -31,10 +31,8 @@ ggplot(miami, aes(x=Math2013)) +
 # Scatter plot of math x reading
 ggplot(miami) +
   geom_point(aes(x=Math2013, y=Reading2013)) + # to-do: discover how to color differently x and y axis
-  facet_wrap(~BoardDistrict) + # Divide por distritos
+  facet_wrap(~BoardDistrict) + # divides by districts
   theme_minimal()
 
-# to-do: compare adressess to Miami district's income from the Census https://youtu.be/BTrRbS_-Ohg?list=PL0tDk-f4v1ugEg01UdiXB9QL0AaSSsaYs&t=741
-
 # !! we're visualizing relationships, not causual connections. low income families don't lead to low rating schools
-# talk to experts to discover these casual connections
+# !! talk to experts to discover these casual connections play in the real world
