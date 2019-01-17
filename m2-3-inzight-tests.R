@@ -43,7 +43,8 @@ us_country <- left_join(country, us, by=c("State"= "STUSPS")) # Join map data to
 ggplot(us_country) + 
   geom_sf(aes(fill=College2014)) +
   scale_fill_viridis_c() +
-  coord_sf(xlim=c(-67, -125), ylim=c(23, 50)) # Rough cut of US states (minus Hawaii and Alaska)
+  coord_sf(xlim=c(-67, -125), ylim=c(23, 50)) + # Rough cut of US states (minus Hawaii and Alaska)
+  ggsave('export/map.png', width=16, height=9)
 
 # video 14: inzight and gapminder
 gap <- read_csv('https://journalismcourses.org/courses/DE0618/Gapminder2012.csv')
