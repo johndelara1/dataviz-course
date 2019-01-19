@@ -34,7 +34,7 @@ ggplot() +
   theme_minimal() +
   ggsave("export/2016-republican-votes.png", width=16, height=9)
 
-## scatter plot of republican votes
+## scatter plot of democratic votes
 ggplot() + 
   geom_sf(data=us, color="white") + # loads map data
   geom_point(data=counties_data, aes(x=Longitude, y=Latitude, size=VoteDemocratic2016, alpha=.6), color="royalblue") + # loads democratic vote
